@@ -1,0 +1,8 @@
+md {folder name} = create folder from terminal.
+npm init -y = create empty package.json file.
+type nul > {filename}.{filetype} = create file from terminal.
+
+
+OAuth - Open Authorization. {Allows interactions between apps without giving away your password}
+
+Install Nodemon to view terminal console.
