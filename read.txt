@@ -3,6 +3,6 @@ npm init -y = create empty package.json file.
 type nul > {filename}.{filetype} = create file from terminal.
 
 
-OAuth - Open Authorization. {Allows interactions between apps without giving away your password}
+OAuth - Open Authorization. {Allows interactions between apps without giving away your password or other authentications}
 
 Install Nodemon to view terminal console.
