@@ -1,13 +1,25 @@
 import React, {useState, useEffect } from 'react';
-import { accessToken } from './spotify';
-import logo from './logo.svg';
+import { accessToken, logout, getCurrentUserProfile } from './spotify';
+// import logo from './logo.svg';
 import './App.css';
 
 function App() {
   const [token, setToken] = useState(null);
+  const [profile, setProfile] = useState(null);
 
   useEffect(() => {
-    setToken(accessToken)
+    setToken(accessToken);
+
+    const fetchData = async () => {
+      //destructured 'data' from response.data. Response from getCurrentUserProfile() in spotify.js line 136
+      const { data } = await getCurrentUserProfile();
+
+      console.log(data)
+      setProfile(data)
+    }
+
+    fetchData();
+
   },[])
 
 
@@ -23,7 +35,10 @@ function App() {
               Log in to Spotify
             </a>
           ) : (
-            <h1>Logged in</h1>
+            <>
+              <h1>Logged in</h1>
+              <button onClick={logout}>Log Out</button>
+            </>
           )
         }
       </header>
