@@ -26,7 +26,7 @@ const PersonalProfile = ({token, profile}) => {
                     <h1>{profile.display_name}</h1>
                     <p>{profile.followers.total} Followers</p>
                     {profile.images.length && profile.images[0].url && (
-                      <img src={profile.images[0].url} alt='Avatar'/>
+                      <img src={profile.images[0].url} alt='Avatar'/> //still works without the condition
                     )}
                   </div>
 //Line 48 & 49, if there's an images (i.e if images.length > 1 OR images.length === true) and the image has a URL, render the image.

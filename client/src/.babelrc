@@ -1,0 +1,9 @@
+{
+    "plugins": ["babel-plugin-styled-components"]
+}
+
+// style components installation process
+//1. npm install --save styled-components
+//2. npm install --save-dev babel-plugin-styled-components
+//3. To activate the babel plugin, paste the code snippet on line 1-3 in a babel config (component) 
+//4. npm install --save-dev babel-plugin-macros {to ensure the babel plugin works with the create-react-app setup}
