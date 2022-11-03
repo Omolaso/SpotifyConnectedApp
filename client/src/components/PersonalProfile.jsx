@@ -1,46 +1,58 @@
 import React from 'react';
 import { logout } from '../spotify';
+import styled from 'styled-components/macro';
+import { StyledHeader } from '../styles';
 
-const PersonalProfile = ({token, profile}) => {
+const StyledLogoutButton = styled.button`
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-md);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: rgba(0,0,0,.7);
+  color: var(--white);
+  font-size: var(--fz-sm);
+  font-weight: 700;
+  border-radius: var(--border-radius-pill);
+  z-index: 10;
+  @media (min-width: 768px) {
+    right: var(--spacing-lg);
+  }
+`;
+
+const PersonalProfile = ({ profile, playlist }) => {
   return (
-    <div>
- 
-      <header>
+    <>
         {
-          !token ? (
-            <a 
-              className="App-link" 
-              href="http://localhost:8888/login"
-            > 
-              Log in to Spotify
-            </a>
-          ) : (
-            <>
-              <h1>Logged in</h1>
-              {
 //NOTE: "&&" operator can be used for conditional rendering just like if statements and ternary operator but its basically for single rendering
 //that is, just "truthy" and "falsy", no "if else". So the expression below is saying if "profile" === true (from state value),
 //render the the div.
-                profile && (
-                  <div>
-                    <h1>{profile.display_name}</h1>
-                    <p>{profile.followers.total} Followers</p>
-                    {profile.images.length && profile.images[0].url && (
-                      <img src={profile.images[0].url} alt='Avatar'/> //still works without the condition
-                    )}
-                  </div>
-//Line 48 & 49, if there's an images (i.e if images.length > 1 OR images.length === true) and the image has a URL, render the image.
+          profile && (
+          <StyledHeader type='user'>
+           <div className="header__inner">
+              {profile.images.length && profile.images[0].url && (
+                <img className='header__img' src={profile.images[0].url} alt='Avatar'/> //still works without the condition
+              )}
+              <div>
+                <div className="header__overline">Profile</div>
+                <h1 className="header__name">{profile.display_name}</h1>
+                <p className="header__meta">
+                  {playlist && (
+                    <span>{playlist.total} Playlist{playlist.total === 0 ? '' : 's'}</span>
+                  )}
+                  <span>
+                    {profile.followers.total} Follower{profile.followers.total === 0 ? '' : 's'}
+                  </span>
+                </p>
+              </div>
+           </div>
+          </StyledHeader>
+//Line 33 & 34, if there's an images (i.e if images.length > 1 OR images.length === true) and the image has a URL, render the image.
 //Read this for more info (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND)
 
-                )
-              }
-              <button onClick={logout}>Log Out</button>
-            </>
           )
         }
-      </header>
-
-    </div>
+      <StyledLogoutButton onClick={logout}>Log Out</StyledLogoutButton>
+    </>
   )
 }
 

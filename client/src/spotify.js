@@ -139,6 +139,16 @@ export const accessToken = getAccessToken();
  export const getCurrentUserProfile = () => axios.get('/me'); //from spotify documentation. Click link on line 136.
 
 
+ /**
+ * Get a List of Current User's Playlists
+ * https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-a-list-of-current-users-playlists
+ * @returns {Promise}
+ */
+export const getCurrentUserPlaylists = (limit = 20) => {
+  return axios.get(`/me/playlists?limit=${limit}`);
+};
+
+
 
 
 
