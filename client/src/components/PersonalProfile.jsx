@@ -2,6 +2,13 @@ import React from 'react';
 import { logout } from '../spotify';
 import styled from 'styled-components/macro';
 import { StyledHeader } from '../styles';
+import { 
+  SectionWrapper,
+  ArtistGrid,
+  TrackList,
+  PlaylistsGrid} from '../pages';
+
+
 
 const StyledLogoutButton = styled.button`
   position: absolute;
@@ -19,7 +26,7 @@ const StyledLogoutButton = styled.button`
   }
 `;
 
-const PersonalProfile = ({ profile, playlist }) => {
+const PersonalProfile = ({ profile, playlist, topArtists, topTracks }) => {
   return (
     <>
         {
@@ -37,10 +44,10 @@ const PersonalProfile = ({ profile, playlist }) => {
                 <h1 className="header__name">{profile.display_name}</h1>
                 <p className="header__meta">
                   {playlist && (
-                    <span>{playlist.total} Playlist{playlist.total === 0 ? '' : 's'}</span>
+                    <span>{playlist.total} Playlist{playlist.total <= 1 ? '' : 's'}</span>
                   )}
                   <span>
-                    {profile.followers.total} Follower{profile.followers.total === 0 ? '' : 's'}
+                    {profile.followers.total} Follower{profile.followers.total <= 1 ? '' : 's'}
                   </span>
                 </p>
               </div>
@@ -52,6 +59,25 @@ const PersonalProfile = ({ profile, playlist }) => {
           )
         }
       <StyledLogoutButton onClick={logout}>Log Out</StyledLogoutButton>
+
+      
+            {topArtists && topTracks && playlist && (
+              <main>
+                <SectionWrapper title="Top artists this month" seeAllLink="/top-artists">
+                  <ArtistGrid artists={topArtists.items.slice(0, 10)} />
+                </SectionWrapper>
+  
+                <SectionWrapper title="Top tracks this month" seeAllLink="/top-tracks">
+                  <TrackList tracks={topTracks.items.slice(0, 10)} />
+                </SectionWrapper>
+  
+                <SectionWrapper title="Playlists" seeAllLink="/playlists">
+                  <PlaylistsGrid playlists={playlist.items.slice(0, 10)} />
+                </SectionWrapper>
+              </main>
+            )}
+          
+
     </>
   )
 }

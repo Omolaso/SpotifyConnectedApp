@@ -82,7 +82,7 @@ const StyledHeader = styled.header`
       display: flex;
       align-items: center;
 
-      &:not(:last-of-type)::after {
+      &:not(:last-of-type)::after { //content should not be added after the last span
         content: '•';
         display: block;
         margin: 0 var(--spacing-xs);

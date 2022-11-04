@@ -20,7 +20,7 @@ const variables = css`
     --fz-xl: 20px;
     --fz-xxl: 24px;
 
-    --spacing-xxs: 4px; //distance variables
+    --spacing-xxs: 4px; //spacing variables
     --spacing-xs: 8px;
     --spacing-sm: 12px;
     --spacing-md: 16px;
