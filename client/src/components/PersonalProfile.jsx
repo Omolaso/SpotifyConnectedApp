@@ -6,7 +6,8 @@ import {
   SectionWrapper,
   ArtistGrid,
   TrackList,
-  PlaylistsGrid} from '../pages';
+  PlaylistsGrid
+} from '../pages';
 
 
 

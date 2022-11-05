@@ -194,6 +194,7 @@ export const getCurrentUserPlaylists = (limit = 20) => {
     //The fetch above gave a cross error {cross origin resourse sharing error}. This is because I'm trying to access data (or request resourses from another domain), that is
     //between backend localhost8888 & frontend localhost3000 and the domain I'm accessing from is not permanent (localhost8888).
     //To fix this, I set up a proxy in my react app package.json and remove the domain from the new fetch.
+    //fetch(`/refresh_token?refresh_token=${refreshToken}`)
     //A proxy server is a server application that acts as an intermediary between a client requesting a resource and the server 
     //providing that resource
 
