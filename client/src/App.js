@@ -53,6 +53,8 @@ function App() {
 
   },[]);
 
+  // console.log(topArtists);
+
 
   return (
     <div>

@@ -9,12 +9,13 @@ const StyledHeader = styled.header`
   height: 30vh;
   max-height: 500px;
   min-height: 250px;
+  /* border: 1px solid; */
 
   @media (min-width: 768px) {
     min-height: 340px;
   }
 
-  &:after {
+  &:after { //after the header
     content: '';
     display: block;
     width: 100%;

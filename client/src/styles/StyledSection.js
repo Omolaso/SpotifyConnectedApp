@@ -4,10 +4,12 @@ const StyledSection = styled.section`
   &:first-of-type {
     .section__inner {
       padding-top: 0;
+      /* border: 1px solid */
     }
   }
 
   .section__inner {
+    /* border: 1px solid; */
     width: 100%;
     max-width: var(--site-max-width);
     margin: 0 auto;

@@ -28,6 +28,7 @@ const StyledLogoutButton = styled.button`
 `;
 
 const PersonalProfile = ({ profile, playlist, topArtists, topTracks }) => {
+
   return (
     <>
         {
@@ -62,10 +63,10 @@ const PersonalProfile = ({ profile, playlist, topArtists, topTracks }) => {
       <StyledLogoutButton onClick={logout}>Log Out</StyledLogoutButton>
 
       
-            {topArtists && topTracks && playlist && (
+            {topArtists && topTracks && playlist && ( // console.log top artists to confirm if artists prop in Artist grid is because of the data from spotify
               <main>
                 <SectionWrapper title="Top artists this month" seeAllLink="/top-artists">
-                  <ArtistGrid artists={topArtists.items.slice(0, 10)} />
+                  <ArtistGrid artists={topArtists.items.slice(0, 10)} /> 
                 </SectionWrapper>
   
                 <SectionWrapper title="Top tracks this month" seeAllLink="/top-tracks">
