@@ -37,7 +37,7 @@ function App() {
       setProfile(userProfile.data);
 
       const userPlaylist = await getCurrentUserPlaylists();
-      console.log(getCurrentUserPlaylists());
+      // console.log(getCurrentUserPlaylists());
       setPlaylist(userPlaylist.data);
 
       const userTopArtists = await getTopArtists();

@@ -6,7 +6,8 @@ import {
   SectionWrapper,
   ArtistGrid,
   TrackList,
-  PlaylistsGrid
+  PlaylistsGrid,
+  Loader
 } from '../pages';
 
 
@@ -36,25 +37,25 @@ const PersonalProfile = ({ profile, playlist, topArtists, topTracks }) => {
 //that is, just "truthy" and "falsy", no "if else". So the expression below is saying if "profile" === true (from state value),
 //render the the div.
           profile && (
-          <StyledHeader type='user'>
-           <div className="header__inner">
-              {profile.images.length && profile.images[0].url && (
-                <img className='header__img' src={profile.images[0].url} alt='Avatar'/> //still works without the condition
-              )}
-              <div>
-                <div className="header__overline">Profile</div>
-                <h1 className="header__name">{profile.display_name}</h1>
-                <p className="header__meta">
-                  {playlist && (
-                    <span>{playlist.total} Playlist{playlist.total <= 1 ? '' : 's'}</span>
+            <StyledHeader type='user'>
+              <div className="header__inner">
+                  {profile.images.length && profile.images[0].url && (
+                    <img className='header__img' src={profile.images[0].url} alt='Avatar'/> //still works without the condition
                   )}
-                  <span>
-                    {profile.followers.total} Follower{profile.followers.total <= 1 ? '' : 's'}
-                  </span>
-                </p>
+                  <div>
+                    <div className="header__overline">Profile</div>
+                    <h1 className="header__name">{profile.display_name}</h1>
+                    <p className="header__meta">
+                      {playlist && (
+                        <span>{playlist.total} Playlist{playlist.total <= 1 ? '' : 's'}</span>
+                      )}
+                      <span>
+                        {profile.followers.total} Follower{profile.followers.total <= 1 ? '' : 's'}
+                      </span>
+                    </p>
+                  </div>
               </div>
-           </div>
-          </StyledHeader>
+            </StyledHeader>
 //Line 33 & 34, if there's an images (i.e if images.length > 1 OR images.length === true) and the image has a URL, render the image.
 //Read this for more info (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_AND)
 
@@ -63,10 +64,10 @@ const PersonalProfile = ({ profile, playlist, topArtists, topTracks }) => {
       <StyledLogoutButton onClick={logout}>Log Out</StyledLogoutButton>
 
       
-            {topArtists && topTracks && playlist && ( // console.log top artists to confirm if artists prop in Artist grid is because of the data from spotify
+            {topArtists && topTracks && playlist ? ( // console.log top artists to confirm if artists prop in Artist grid is because of the data from spotify
               <main>
                 <SectionWrapper title="Top artists this month" seeAllLink="/top-artists">
-                  <ArtistGrid artists={topArtists.items.slice(0, 10)} /> 
+                  <ArtistGrid artists={topArtists.items.slice(0, 10)} />
                 </SectionWrapper>
   
                 <SectionWrapper title="Top tracks this month" seeAllLink="/top-tracks">
@@ -77,7 +78,9 @@ const PersonalProfile = ({ profile, playlist, topArtists, topTracks }) => {
                   <PlaylistsGrid playlists={playlist.items.slice(0, 10)} />
                 </SectionWrapper>
               </main>
-            )}
+            ) : 
+              <Loader/>
+            }
           
 
     </>

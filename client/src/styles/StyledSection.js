@@ -32,6 +32,7 @@ const StyledSection = styled.section`
     display: flex;
     margin: 0;
     font-size: var(--fz-xxl);
+    /* border: 1px solid */
   }
 
   .section__breadcrumb {
